@@ -1,0 +1,246 @@
+﻿@model HoLaBus.Models.Direction
+
+@{
+    ViewBag.Title = "Sửa Thông Tin";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+
+<section id="page-title-area" class="section-padding overlay">
+    <div class="container">
+        <div class="row">
+            <!-- Page Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>Sửa Tuyến Xe</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                </div>
+            </div>
+            <!-- Page Title End -->
+        </div>
+    </div>
+</section>
+<br />
+
+<div class="form-horizontal">
+    <div class="container">
+        <br />
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.BusId)
+                @Html.HiddenFor(model => model.PriceFirst)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.RoadName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.RoadName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.RoadName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BusStatus, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                       
+                            @{
+                                List<SelectListItem>
+                                    listItems3 = new List<SelectListItem>
+                                        ();
+                                listItems3.Add(new SelectListItem
+                                {
+                                    Text = "Mở Bán Tuyến Này",
+                                    Value = "true",
+                                   
+                                });
+                                listItems3.Add(new SelectListItem
+                                {
+                                    Text = "Hủy Bán Tuyến Này",
+                                    Value = "false",
+
+                                });
+
+
+                            }
+
+                            @Html.DropDownListFor(model => model.BusStatus, listItems3, "Chọn", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.BusStatus, "", new { @class = "text-danger" })
+                       
+                    </div>
+                    
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TicketPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TicketPrice, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TicketPrice, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DiscountValue, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @{
+                            List<SelectListItem> listItems = new List<SelectListItem>();
+                            listItems.Add(new SelectListItem
+                            {
+                                Text = "Không Giảm",
+                                Value = "0"
+                            });
+                            listItems.Add(new SelectListItem
+                            {
+                                Text = "1%",
+                                Value = "1"
+                            });
+                            listItems.Add(new SelectListItem
+                            {
+                                Text = "2%",
+                                Value = "2",
+
+                            });
+                            listItems.Add(new SelectListItem
+                            {
+                                Text = "3%",
+                                Value = "3"
+                            });
+                            listItems.Add(new SelectListItem
+                            {
+                                Text = "4%",
+                                Value = "4"
+                            });
+                            listItems.Add(new SelectListItem
+                            {
+                                Text = "5%",
+                                Value = "5"
+                            });
+                            listItems.Add(new SelectListItem
+                            {
+                                Text = "6%",
+                                Value = "6"
+                            });
+                            listItems.Add(new SelectListItem
+                            {
+                                Text = "7%",
+                                Value = "7"
+                            });
+                            listItems.Add(new SelectListItem
+                            {
+                                Text = "8%",
+                                Value = "8"
+                            });
+                            listItems.Add(new SelectListItem
+                            {
+                                Text = "9%",
+                                Value = "9"
+                            });
+                            listItems.Add(new SelectListItem
+                            {
+                                Text = "10%",
+                                Value = "10"
+                            });
+                            listItems.Add(new SelectListItem
+                            {
+                                Text = "11%",
+                                Value = "11"
+                            });
+                            listItems.Add(new SelectListItem
+                            {
+                                Text = "12%",
+                                Value = "12"
+                            });
+                            listItems.Add(new SelectListItem
+                            {
+                                Text = "13%",
+                                Value = "13"
+                            });
+                            listItems.Add(new SelectListItem
+                            {
+                                Text = "14%",
+                                Value = "14"
+                            });
+                            listItems.Add(new SelectListItem
+                            {
+                                Text = "15%",
+                                Value = "15"
+                            });
+
+                        }
+
+                        @Html.DropDownListFor(model => model.DiscountValue, listItems, "Chọn", htmlAttributes: new { @class = "form-control" })
+                        @*@Html.EditorFor(model => model.DiscountValue, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DiscountValue, "Chiết khẩu phải là số nguyên và nhỏ hơn 100!", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NumberTicket, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.NumberTicket, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.NumberTicket, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StopLocation1, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.StopLocation1, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.StopLocation1, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StopLocation2, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.StopLocation2, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.StopLocation2, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StopLocation3, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.StopLocation3, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.StopLocation3, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StopLocation4, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.StopLocation4, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.StopLocation4, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StopLocation5, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.StopLocation5, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.StopLocation5, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StopLocation6, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.StopLocation6, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.StopLocation6, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="book-button text-center">
+                    <button class="book-now-btn">Sửa Tuyến</button>
+
+                </div>
+            </div>
+                            }
+        @Html.ActionLink("Quay lại", "Index")
+        </div>
+          
+        </div>
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }

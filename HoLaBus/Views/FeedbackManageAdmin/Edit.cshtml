@@ -1,0 +1,111 @@
+﻿@model HoLaBus.Models.Feedback
+
+@{
+    ViewBag.Title = "Phẩn Hồi";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<section id="page-title-area" class="section-padding overlay">
+    <div class="container">
+        <div class="row">
+            <!-- Page Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>Phản Hồi Khách Hàng</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+
+                </div>
+            </div>
+            <!-- Page Title End -->
+        </div>
+    </div>
+</section>
+<br />
+<br />
+<div class="form-horizontal">
+    <div class="container">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.FeedbackId)
+
+
+                @Html.HiddenFor(model => model.UserId)
+
+
+
+                @if (Model.UserId != null)
+                {
+                    if (Model.ApplicationUser.FullName != null)
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.GuestName, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.ApplicationUser.FullName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.ApplicationUser.FullName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ApplicationUser.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.ApplicationUser.UserName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.ApplicationUser.UserName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    }
+                }
+
+                @if (Model.UserId == null)
+                {
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GuestName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.GuestName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.GuestName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                }
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DateCreate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DateCreate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.DateCreate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FeedbackUser, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.FeedbackUser, htmlAttributes: new { @class = "form-control", @row = "10", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(model => model.FeedbackUser, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FeedbackAdmin, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.FeedbackAdmin, htmlAttributes: new { @class = "form-control", @row = "10" })
+                        @Html.ValidationMessageFor(model => model.FeedbackAdmin, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="book-button text-center">
+                    <button class="book-now-btn">Phản Hồi</button>
+                </div>
+            </div>
+        }
+        @Html.ActionLink("Quay lại", "Index")
+    </div>
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,84 @@
+﻿@model HoLaBus.Models.SeatInformation
+
+@{
+    ViewBag.Title = "Chi Tiết Ghế ";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+    <section id="page-title-area" class="section-padding overlay">
+        <div class="container">
+            <div class="row">
+                <!-- Page Title Start -->
+                <div class="col-lg-12">
+                    <div class="section-title  text-center">
+                        <h2>Quản Lý Ghế</h2>
+                        <span class="title-line"><i class="fa fa-car"></i></span>
+                    </div>
+                </div>
+                <!-- Page Title End -->
+            </div>
+        </div>
+    </section>
+
+    <br />
+    <div class="form-horizontal">
+        <div class="container">
+            <br />
+            <h4>Chi Tiết Ghế</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.BusId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BusId)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Direction.RoadName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Direction.RoadName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.SeatName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.SeatName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Status)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CommentAdmin)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CommentAdmin)
+                </dd>
+
+
+
+            </dl>
+            @if (Model.CommentAdmin.Equals("Ghế đã bán"))
+            {
+                @Html.ActionLink("Quay lại", "Index")
+            }
+            else
+            {
+                <p>
+                    @Html.ActionLink("Sửa ghế", "Edit", new { id = Model.SeatId }) |
+                    @Html.ActionLink("Quay lại", "Index")
+                </p>
+            }
+          
+        </div>
+        </div>
+ 

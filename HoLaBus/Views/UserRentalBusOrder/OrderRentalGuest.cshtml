@@ -1,0 +1,172 @@
+﻿@model HoLaBus.Models.RentalBusUserViewModel
+@{
+    ViewBag.Title = "Thuê Xe";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+
+}
+
+<section id="page-title-area" class="section-padding overlay">
+    <div class="container">
+        <div class="row">
+            <!-- Page Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>Thuê Xe</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                    <p>Bạn điền đầy đủ thông tin để thuê xe nhé. Vui lòng liên hệ với HoLa Bus trước khi thuê xe - 083 809 0004.</p>
+                    <br />
+                    <br />
+                    @using (Html.BeginForm("BuyRentalGuest", "UserRentalBusOrder", new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            @Html.HiddenFor(model => model.UserId)
+                            @Html.HiddenFor(model => model.PaymentStatusId)
+                            <div class="form-group">
+
+                                <div class="book-button text-center">
+                                    @Html.EditorFor(model => model.RentalBusId, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                    @Html.ValidationMessageFor(model => model.RentalBusId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="book-button text-center">
+                                    @Html.EditorFor(model => model.Datebyu, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                    @Html.ValidationMessageFor(model => model.Datebyu, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <br />
+                            <div class="form-group">
+
+                                <div class="book-button text-center">
+                                    @Html.EditorFor(model => model.NameUser, new { htmlAttributes = new { @class = "form-control", @placeholder = "Họ Và Tên" } })
+                                    @Html.ValidationMessageFor(model => model.NameUser, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="book-button text-center">
+                                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Số Điện Thoại (phải là 10 số và không có ký tự đặc biệt)" } })
+                                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="book-button text-center">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="book-button text-center">
+                                    @Html.TextAreaFor(model => model.Address, htmlAttributes: new { @class = "form-control", @row = "10", @placeholder = "Địa Chỉ (độ dài nhỏ hơn 400 ký tự)" })
+                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="book-button text-center">
+                                    @{
+                                        List<SelectListItem> listItems2 = new List<SelectListItem>();
+                                        listItems2.Add(new SelectListItem
+                                        {
+                                            Text = "Xe 7 Chỗ",
+                                            Value = "7"
+                                        });
+                                        listItems2.Add(new SelectListItem
+                                        {
+                                            Text = "Xe 16 Chỗ",
+                                            Value = "16",
+
+                                        });
+                                        listItems2.Add(new SelectListItem
+                                        {
+                                            Text = "Xe 28 Chỗ",
+                                            Value = "28"
+                                        });
+                                        listItems2.Add(new SelectListItem
+                                        {
+                                            Text = "Xe 35 Chỗ",
+                                            Value = "35"
+                                        });
+                                        listItems2.Add(new SelectListItem
+                                        {
+                                            Text = "Xe 46 Chỗ",
+                                            Value = "46"
+                                        });
+
+                                    }
+
+                                    @Html.DropDownListFor(model => model.Bustype, listItems2, "Chọn Loại Xe", htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Bustype, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="book-button text-center">
+                                    @Html.EditorFor(model => model.Departure, new { htmlAttributes = new { @class = "form-control", @placeholder = "Điểm Đi" } })
+                                    @Html.ValidationMessageFor(model => model.Departure, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="book-button text-center">
+                                    @Html.EditorFor(model => model.StopLocation, new { htmlAttributes = new { @class = "form-control", @placeholder = "Điểm Đến" } })
+                                    @Html.ValidationMessageFor(model => model.StopLocation, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <div class="book-button text-center">
+                                    @Html.EditorFor(model => model.GettingOfLocation, new { htmlAttributes = new { @class = "form-control", @placeholder = "Điểm Trả Khách Ngày Về" } })
+                                    @Html.ValidationMessageFor(model => model.GettingOfLocation, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="book-button text-center">
+                                    @Html.EditorFor(model => model.DepartureDay, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ngày Khởi Hành" } })
+                                    @Html.ValidationMessageFor(model => model.DepartureDay, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="book-button text-center">
+                                    @Html.EditorFor(model => model.ReturnDay, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ngày Về" } })
+                                    @Html.ValidationMessageFor(model => model.ReturnDay, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="book-button text-center">
+                                <button class="book-now-btn">Thuê Xe</button>
+                            </div>
+
+                        </div>
+                    }
+
+                </div>
+            </div>
+            <!-- Page Title End -->
+            <div>
+                @Html.ActionLink("Quay lại", "Index", "ShowNews")
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

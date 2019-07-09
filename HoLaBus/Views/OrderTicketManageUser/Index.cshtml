@@ -1,0 +1,139 @@
+﻿@model IEnumerable<HoLaBus.Models.TicketBooking>
+
+@{
+    ViewBag.Title = "Quản Lý Đơn Hàng ";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+@section Styles {
+    @Styles.Render("~/Content/datatables")
+}
+
+
+<section id="page-title-area" class="section-padding overlay">
+    <div class="container">
+        <div class="row">
+            <!-- Page Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>Thông Tin Đơn Hàng</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                </div>
+            </div>
+            <!-- Page Title End -->
+        </div>
+    </div>
+</section>
+<br />
+<div class="form-horizontal">
+    <div class="container">
+       
+        <br />
+        <span style="color:blue">Trong trường hợp Bạn đã thanh toán và HoLa Bus chưa xác nhận mua vé thành công, mời bạn gửi thông báo cho HoLa Bus vào cột Tình Trạng Thanh Toán !</span>
+        <br />
+      
+        <span style="color:palegreen">@ViewBag.Message</span>
+        <br />
+        <table class="table table-bordered table-striped table-responsive" id="newsDataTable">
+            <thead>
+                <tr style="background-color:cadetblue; color:white">
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TicketId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Direction.RoadName)
+                    </th>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.SeatName)
+                    </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.DateBuy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Total)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ConfimDelivery)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PaymentStatus.PaymentStatusName)
+                    </th>
+
+
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TicketId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Direction.RoadName)
+                        </td>
+
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.SeatName)
+                        </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateBuy)
+                        </td>
+
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Total)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ConfimDelivery)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PaymentStatus.PaymentStatusName)
+                        </td>
+
+
+                        <td style="text-align:center">
+                            @if (item.PaymentStatusId == 1)
+                            {
+                                <label style="background-color:green;text-align:center;color:green">_ <a style="color:white" @Html.ActionLink("Xác Nhận", "Edit", new { id = item.TicketId })></a> </label>
+                                <label style="background-color:orange;text-align:center;color:orange">_<a style="color:white" @Html.ActionLink("Chi Tiết", "Details", new { id = item.TicketId })></a></label>
+                                <label style="background-color:red;text-align:center;color:red">_<a style="color:white" @Html.ActionLink("Xóa Đơn", "Delete", new { id = item.TicketId })></a> </label>
+                            }
+                            else
+                            {
+                                <label style="background-color:green;text-align:center;color:green">_ <a style="color:white" @Html.ActionLink("Xác Nhận", "Edit", new { id = item.TicketId })></a> </label>
+                                <label style="background-color:orange;text-align:center;color:orange">_<a style="color:white" @Html.ActionLink("Chi Tiết", "Details", new { id = item.TicketId })></a></label>
+                               
+                            }
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <p>
+            @Html.ActionLink("Quay Lại", "Index", "Manage")
+        </p>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/datatables")
+    <script>
+        $(document).ready(function () {
+            $('#newsDataTable').DataTable({
+                "language": {
+                    "url": "/Content/Vietnamese.json"
+                }
+            });
+        });
+    </script>
+}

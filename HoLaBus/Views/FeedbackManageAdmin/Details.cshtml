@@ -1,0 +1,94 @@
+﻿@model HoLaBus.Models.Feedback
+
+@{
+    ViewBag.Title = "Chi Tiết";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<section id="page-title-area" class="section-padding overlay">
+    <div class="container">
+        <div class="row">
+            <!-- Page Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>Chi Tiết Đánh Giá</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+
+                </div>
+            </div>
+            <!-- Page Title End -->
+        </div>
+    </div>
+</section>
+<br />
+<br />
+<div class="form-horizontal">
+    <div class="container">
+        <hr />
+        <dl class="dl-horizontal">
+            @if (Model.UserId != null)
+            {
+                if (Model.ApplicationUser.FullName != null)
+                {
+                    <dt>
+                        @Html.DisplayNameFor(model => model.GuestName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ApplicationUser.FullName)
+                    </dd>
+                }
+                else
+                {
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ApplicationUser.UserName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ApplicationUser.UserName)
+                    </dd>
+                }
+            }
+
+
+            @if (Model.UserId == null)
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.GuestName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.GuestName)
+                </dd>
+            }
+            <dt>
+                @Html.DisplayNameFor(model => model.DateCreate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateCreate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.FeedbackUser)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FeedbackUser)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FeedbackAdmin)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FeedbackAdmin)
+            </dd>
+
+        </dl>
+        @Html.ActionLink("Phản Hồi", "Edit", new { id = Model.FeedbackId }) |
+        @Html.ActionLink("Quay lại", "Index")
+
+
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿@model HoLaBus.Models.ExternalLoginListViewModel
+@using Microsoft.Owin.Security
+
+<h3><b style="color:white">Giảng viên/Sinh viên FPT đăng nhập</b> </h3>
+<hr />
+
+@{
+    var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+    if (loginProviders.Count() == 0) {
+        <div>
+            <p>
+                There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
+                for details on setting up this ASP.NET application to support logging in via external services.
+            </p>
+        </div>
+    }
+    else {
+        using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = Model.ReturnUrl })) {
+            @Html.AntiForgeryToken()
+           
+                <div class="book-button text-center">
+                    <p>
+                        @foreach (AuthenticationDescription p in loginProviders)
+                        {
+                            <button type="submit" style="color:white" class="btn btn-danger" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">Đăng Nhập Với FPT Email</button>
+                        }
+                    </p>
+                    </div>
+                
+        }
+    }
+}

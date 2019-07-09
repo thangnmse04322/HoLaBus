@@ -1,0 +1,114 @@
+﻿@model IEnumerable<HoLaBus.Models.MoneyManagent>
+
+@{
+    ViewBag.Title = "Quản Lý Tiền";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+@section Styles {
+    @Styles.Render("~/Content/datatables")
+}
+
+<section id="page-title-area" class="section-padding overlay">
+    <div class="container">
+        <div class="row">
+            <!-- Page Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>Quản Lý Tài Chính</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                </div>
+            </div>
+            <!-- Page Title End -->
+        </div>
+    </div>
+</section>
+<br />
+<br />
+<div class="container">
+<br />
+<table class="table table-bordered table-striped table-responsive" id="newsDataTable">
+    <thead>
+    <tr style="background-color:cadetblue; color:white">
+       
+      
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.namebus)
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.totalseat)
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.totalmoney)
+        </th>
+        <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.monneycount)
+            </th>
+        <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.moneyconlai)
+            </th>
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.moneylo)
+        </th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td style="text-align:center">
+                @Html.DisplayFor(modelItem => item.namebus)
+            </td>
+            <td style="text-align:center">
+                @Html.DisplayFor(modelItem => item.totalseat)
+            </td>
+            <td style="text-align:center">
+                @Html.DisplayFor(modelItem => item.totalmoney)
+            </td>
+            <td style="text-align:center">
+                @Html.DisplayFor(modelItem => item.monneycount)
+            </td>
+            <td style="text-align:center">
+                @Html.DisplayFor(modelItem => item.moneyconlai)
+            </td>
+            @if (item.totalmoney - item.monneycount > 0)
+            {
+                <td style="text-align: center">
+                    <span style="color: red">Hiện đang lỗ </span>
+                    @Html.DisplayFor(modelItem => item.moneylo)
+                </td>
+            }
+            else if (item.totalmoney - item.monneycount < 0)
+            {
+                <td style="text-align: center">
+                    <span style="color: green">Hiện đang lãi </span>
+                    @Html.DisplayFor(modelItem => item.moneylai)
+                </td>
+            }
+            else if(item.totalmoney - item.monneycount == 0)
+            {
+                <td style="text-align: center">
+                    <span style="color: orangered">Hiện đang hòa vốn </span>
+                   
+                </td>
+            }
+
+        </tr>
+    }
+    
+    </tbody>
+</table>
+<p>
+    @Html.ActionLink("Trang Quản Lý HoLaBus", "Admin", "Home")
+</p>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/datatables")
+    <script>
+        $(document).ready(function () {
+            $('#newsDataTable').DataTable({
+                "language": {
+                    "url": "/Content/Vietnamese.json"
+                }
+            });
+        });
+    </script>
+}

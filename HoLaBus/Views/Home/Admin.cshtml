@@ -1,0 +1,243 @@
+﻿
+@{
+    ViewBag.Title = "Trang Quản Lý HoLa Bus";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<section id="page-title-area" class="section-padding overlay">
+    <div class="container">
+        <div class="row">
+            <!-- Page Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>Trang Quản Lý HoLa Bus</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                </div>
+            </div>
+            <!-- Page Title End -->
+        </div>
+    </div>
+</section>
+<br />
+<!--== Services Area Start ==-->
+<section id="service-area" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <!-- Section Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>Quản Lý Dịch Vụ</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                </div>
+
+            </div>
+            <!-- Section Title End -->
+        </div>
+
+
+        <!-- Service Content Start -->
+        <div class="row">
+
+            <div class="col-lg-4 text-center">
+                <div class="service-item" style="height:340px">
+                    <i class="fa fa-edit"></i>
+                    <h3>Nhắc Nhở/Hủy Vé</h3>
+                    <p>Hệ thống sẽ tự động gửi email cho những đơn sắp quá hạn thanh toán. Và hủy toàn bộ đơn đã quá hạn thanh toán!</p>
+                    <br />
+                    <div class="about-btn">
+                        <p><a href="~/Support/AutoDelete">Thực Hiện</a></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Service Start -->
+            <div class="col-lg-4 text-center">
+                <div class="service-item" style="height:340px">
+                    <i class="fa fa-road"></i>
+                    <h3>Quản Lý Tuyến Xe</h3>
+                    <p>Thêm hoặc xóa và sửa tuyến xe!.</p>
+                    <br />
+                    <div class="about-btn">
+                        <br />
+                        <br />
+                        <p><a href="~/Directions/Index">Tiếp Tục</a></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Service End -->
+            <div class="col-lg-4 text-center">
+                <div class="service-item" style="height:340px">
+                    <i class="fa fa-cog"></i>
+                    <h3>Sửa Ghế</h3>
+                    <p>Hủy bán ghế, và mở bán lại ghế trong 1 tuyến xe!</p>
+                    <br />
+                    <div class="about-btn">
+                        <br />
+                        <p><a href="~/SeatInformations/Index">Tiếp Tục</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 text-center">
+                <div class="service-item" style="height:340px">
+                    <i class="fa fa-car"></i>
+                    <h3>Số Ghế Đã Bán</h3>
+                    <p>Xem số ghế còn lại hoặc đã bán tại đây!</p>
+                    <br />
+                    <div class="about-btn">
+                        <br />
+                        <p><a href="~/SeatInformations/DisplatSeatExist">Xem</a></p>
+                    </div>
+                </div>
+            </div>
+        <div class="col-lg-4 text-center">
+            <div class="service-item" style="height:340px">
+                <i class="fa fa-calculator"></i>
+                <h3>Quản Lý Tiền</h3>
+                <p>Xem tổng số tiền của các ghế đã hoặc chưa bán tại đây!</p>
+                <br />
+                <div class="about-btn">
+                    <br />
+                    <p><a href="~/SeatInformations/Cacula">Xem</a></p>
+                </div>
+            </div>
+        </div>
+            <div class="col-lg-4 text-center">
+                <div class="service-item" style="height:340px">
+                    <i class="fa fa-ticket"></i>
+                    <h3>Đơn Vé Xe</h3>
+                    <p>Xem lại thông tin đơn vé xe mà khách hàng đã đặt!</p>
+                    <br />
+                    <div class="about-btn">
+                        <p><a href="~/OrderManageAdmin/Index">Chi Tiết</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 text-center">
+                <div class="service-item" style="height:340px">
+                    <i class="fa fa-bus"></i>
+                    <h3>Đơn Thuê Xe</h3>
+                    <p>Xem lại thông tin đơn thuê xe mà khách hàng đã đặt!!</p>
+                    <br />
+                    <div class="about-btn">
+                        <p><a href="~/RentalOrderManageAdmin/Index">Chi Tiết</a></p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-lg-4 text-center">
+                <div class="service-item" style="height:340px">
+                    <i class="fa fa-database"></i>
+                    <h3>Dữ Liệu Thuê Xe</h3>
+                    <p>Tải dữ liệu đơn thuê xe về máy tại đây!</p>
+                    <br />
+                    <div class="about-btn">
+                        <br />
+                        <p><a href="~/RentalOrderManageAdmin/ImportEX">Tải Dữ Liệu</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="service-item" style="height:340px">
+                    <i class="fa fa-database"></i>
+                    <h3>Dữ Liệu Vé Xe</h3>
+                    <p>Tải dữ liệu đơn vé xe về máy tại đây!</p>
+                    <br />
+                    <div class="about-btn">
+                        <br />
+                        <p><a href="~/OrderManageAdmin/ImportEX">Tải Dữ Liệu</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Service Start -->
+            <div class="col-lg-4 text-center">
+                <div class="service-item" style="height:340px">
+                    <i class="fa fa-newspaper-o"></i>
+                    <h3>Quản Lý Tin Tức</h3>
+                    <p>Thêm thông tin khuyến mại, hoặc thông tin hoạt động của HoLa Bus tại đây!</p>
+                    <br />
+                    <div class="about-btn">
+                        <p><a href="~/News/Index">Tiếp Tục</a></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Service End -->
+            <!-- Single Service Start -->
+            <div class="col-lg-4 text-center">
+                <div class="service-item" style="height:340px">
+                    <i class="fa fa-money"></i>
+                    <h3>Phương Thức Thanh Toán</h3>
+                    <p>Thêm hình thức thanh toán vé xe tại đây!</p>
+                    <br />
+                    <div class="about-btn">
+                        <p><a href="~/PaymentMethods/Index">Tiếp Tục</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Service End -->
+            <div class="col-lg-4 text-center">
+                <div class="service-item" style="height:340px">
+                    <i class="fa fa-facebook"></i>
+                    <h3>Đánh Giá</h3>
+                    <p>Xem toàn bộ đánh giá và phản hổi lại đánh giá khách hàng tại đây!</p>
+                    <br />
+                    <div class="about-btn">
+                        <p><a href="~/FeedbackManageAdmin/Index">Tiếp Tục</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="service-item" style="height:340px">
+                    <i class="fa fa-user"></i>
+                    <h3>Tài Khoản Khách Hàng</h3>
+                    <p>Xem thông tin khách hàng tại đây!</p>
+                    <br />
+                    <div class="about-btn">
+                        <p><a href="~/Manage/ManageAccount">Xem Thêm</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 text-center">
+                <div class="service-item" style="height:340px">
+                    <i class="fa fa-user-secret"></i>
+                    <h3>Thay Đổi Mật Khẩu</h3>
+                    <p>Thay đổi mật khẩu đăng nhập tại đây!</p>
+                    <br />
+                    <div class="about-btn">
+                        <p><a href="~/Manage/ChangePassword">Thay Đổi</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 text-center">
+                <div class="service-item" style="height:340px">
+                    <i class="fa fa-cog"></i>
+                    <h3>Cập Nhật TK</h3>
+                    <p>Cập nhật thông tin tài khoản tại đây!</p>
+                    <br />
+                    <div class="about-btn">
+                        <p><a href="~/Manage/UpdateUserInfo">Cập Nhật</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="service-item" style="height:340px">
+                    <i class="fa fa-info"></i>
+                    <h3>Tài Khoản</h3>
+                    <p>Xem thông tin tài khoản của bạn tại đây!</p>
+                    <br />
+                    <div class="about-btn">
+                        <p><a href="~/Manage/DisplayInfo">Chi Tiết</a></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Service Content End -->
+    </div>
+</section>
+<!--== Services Area End ==-->

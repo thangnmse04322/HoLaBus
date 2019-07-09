@@ -1,0 +1,273 @@
+﻿@model HoLaBus.Models.LocationViewModel
+
+@{
+    ViewBag.Title = "Chọn Điểm Dừng";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<section id="page-title-area" class="section-padding overlay">
+    <div class="container">
+        <div class="row">
+            <!-- Page Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>Đặt Vé Xe </h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                </div>
+
+            </div>
+            <!-- Page Title End -->
+        </div>
+    </div>
+</section>
+
+<br />
+<br />
+
+    <div class="container">
+        <br />
+        @using (Html.BeginForm("Cart", "TicketBooking", new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <div>
+                    @Html.ActionLink("Quay lại", "Booking")
+                </div>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BusId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.BusId, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.BusId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.RoadName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.RoadName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.RoadName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PriceTicket, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.PriceTicket, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.PriceTicket, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LocationsList, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("Location", Model.LocationsList, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.RoadName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Payment, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("Payment", (IEnumerable<SelectListItem>)ViewBag.SelectPayment, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Payment, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TotalSeat, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TotalSeat, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.TotalSeat, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            
+                @if (Model.TotalSeat == 7)
+                {
+                    @Html.LabelFor(model => model.SeatInformation, htmlAttributes: new { @class = "control-label" })
+                    <div class="form-group" style="max-width: 405px; border: 0px solid #000000; padding: 10px 0px; margin-left: 50px;">
+
+                        <div class="col-md-10">
+                            <div style="border-style:double;border-radius:12px;border-color:black">
+                                @foreach (var seat in Model.SeatInformation)
+                                {
+                                    if (seat.Status == true)
+                                    {
+                                        <label style="border-style:outset;border-radius:10px;text-align:center;border-color:white;background-color:red">
+                                            <text style="color:white;margin:0px 0px 20px 0px">@seat.SeatName</text>
+                                            <input type="checkbox" name="Seat" style="height:30px;width:30px;background-color:red " value="@seat.SeatId" @(seat.Status ? "disabled checked" : "")
+                                                   title="@(seat.Status?"Ghế đã bán":"Ghế trống")" />
+                                        </label>
+                                    }
+                                    else
+                                    {
+                                        <label id="@seat.SeatId" style="border-style:outset;border-radius:10px;text-align:center;border-color:white;background-color:green">
+                                            <text style="color:white;margin:0px 0px 20px 0px">@seat.SeatName</text>
+                                            <input onchange="statecheck(this,@seat.SeatId)" type="checkbox" name="Seat" style="height:30px;width:30px;margin:0px 0px 0px 0px " value="@seat.SeatId" @(seat.Status ? "disabled checked" : "")
+                                                   title="@(seat.Status?"Ghế đã bán":"Ghế trống")" />
+                                        </label>
+                                       
+                                    }
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if (Model.TotalSeat == 28)
+                {
+                    @Html.LabelFor(model => model.SeatInformation, htmlAttributes: new { @class = "control-label" })
+                    <div class="form-group" style="max-width: 680px; border: 0px solid #000000; padding: 10px 0px; margin-left: 50px;">
+
+                        <div class="col-md-10">
+                            <div style="border-style:double;border-radius:12px;border-color:black">
+                                @foreach (var seat in Model.SeatInformation)
+                                {
+                                    if (seat.Status == true)
+                                    {
+                                        <label style="border-style:outset;border-radius:10px;text-align:center;border-color:white;background-color:red">
+                                            <text style="color:white;margin:0px 0px 20px 0px">@seat.SeatName</text>
+                                            <input type="checkbox" name="Seat" style="height:30px;width:30px;background-color:red " value="@seat.SeatId" @(seat.Status ? "disabled checked" : "")
+                                                   title="@(seat.Status?"Ghế đã bán":"Ghế trống")" />
+                                        </label>
+                                    }
+                                    else
+                                    {
+                                        <label id="@seat.SeatId" style="border-style:outset;border-radius:10px;text-align:center;border-color:white;background-color:green">
+                                            <text style="color:white;margin:0px 0px 20px 0px">@seat.SeatName</text>
+                                            <input onchange="statecheck(this,@seat.SeatId)" type="checkbox" name="Seat" style="height:30px;width:30px;margin:0px 0px 0px 0px " value="@seat.SeatId" @(seat.Status ? "disabled checked" : "")
+                                                   title="@(seat.Status?"Ghế đã bán":"Ghế trống")" />
+                                        </label>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if (Model.TotalSeat == 16)
+                {
+                    @Html.LabelFor(model => model.SeatInformation, htmlAttributes: new { @class = "control-label" })
+                    <div class="form-group" style="max-width: 760px; border: 0px solid #000000; padding: 10px 0px; margin-left: 50px;">
+
+                        <div class="col-md-10">
+                            <div style="border-style:double;border-radius:12px;border-color:black">
+                                @foreach (var seat in Model.SeatInformation)
+                                {
+                                    if (seat.Status == true)
+                                    {
+                                        <label style="border-style:outset;border-radius:10px;text-align:center;border-color:white;background-color:red">
+                                            <text style="color:white;margin:0px 0px 20px 0px">@seat.SeatName</text>
+                                            <input type="checkbox" name="Seat" style="height:30px;width:30px;background-color:red " value="@seat.SeatId" @(seat.Status ? "disabled checked" : "")
+                                                   title="@(seat.Status?"Ghế đã bán":"Ghế trống")" />
+                                        </label>
+                                    }
+                                    else
+                                    {
+                                        <label id="@seat.SeatId" style="border-style:outset;border-radius:10px;text-align:center;border-color:white;background-color:green">
+                                            <text style="color:white;margin:0px 0px 20px 0px">@seat.SeatName</text>
+                                            <input onchange="statecheck(this,@seat.SeatId)" type="checkbox" name="Seat" style="height:30px;width:30px;margin:0px 0px 0px 0px " value="@seat.SeatId" @(seat.Status ? "disabled checked" : "")
+                                                   title="@(seat.Status?"Ghế đã bán":"Ghế trống")" />
+                                        </label>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if (Model.TotalSeat == 35)
+                {
+                    @Html.LabelFor(model => model.SeatInformation, htmlAttributes: new { @class = "control-label" })
+                    <div class="form-group" style="max-width: 860px; border: 0px solid #000000; padding: 10px 0px; margin-left: 50px;">
+
+                        <div class="col-md-10">
+                            <div style="border-style:double;border-radius:12px;border-color:black">
+                                @foreach (var seat in Model.SeatInformation)
+                                {
+                                    if (seat.Status == true)
+                                    {
+                                        <label style="border-style:outset;border-radius:10px;text-align:center;border-color:white;background-color:red">
+                                            <text style="color:white;margin:0px 0px 20px 0px">@seat.SeatName</text>
+                                            <input type="checkbox" name="Seat" style="height:30px;width:30px;background-color:red " value="@seat.SeatId" @(seat.Status ? "disabled checked" : "")
+                                                   title="@(seat.Status?"Ghế đã bán":"Ghế trống")" />
+                                        </label>
+                                    }
+                                    else
+                                    {
+                                        <label id="@seat.SeatId" style="border-style:outset;border-radius:10px;text-align:center;border-color:white;background-color:green">
+                                            <text style="color:white;margin:0px 0px 20px 0px">@seat.SeatName</text>
+                                            <input onchange="statecheck(this,@seat.SeatId)" type="checkbox" name="Seat" style="height:30px;width:30px;margin:0px 0px 0px 0px " value="@seat.SeatId" @(seat.Status ? "disabled checked" : "")
+                                                   title="@(seat.Status?"Ghế đã bán":"Ghế trống")" />
+                                        </label>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if (Model.TotalSeat == 46)
+                {
+                    @Html.LabelFor(model => model.SeatInformation, htmlAttributes: new { @class = "control-label" })
+                    <div class="form-group" style="max-width: 760px; border: 0px solid #000000; padding: 10px 0px; margin-left: 50px;">
+
+                        <div class="col-md-10">
+                            <div style="border-style:double;border-radius:12px;border-color:black">
+                                @foreach (var seat in Model.SeatInformation)
+                                {
+                                    if (seat.Status == true)
+                                    {
+                                        <label style="border-style:outset;border-radius:10px;text-align:center;border-color:white;background-color:red">
+                                            <text style="color:white;margin:0px 0px 20px 0px">@seat.SeatName</text>
+                                            <input type="checkbox" name="Seat" style="height:30px;width:30px;background-color:red " value="@seat.SeatId" @(seat.Status ? "disabled checked" : "")
+                                                   title="@(seat.Status?"Ghế đã bán":"Ghế trống")" />
+                                        </label>
+                                    }
+                                    else
+                                    {
+                                        <label id="@seat.SeatId" style="border-style:outset;border-radius:10px;text-align:center;border-color:white;background-color:green">
+                                            <text style="color:white;margin:0px 0px 20px 0px">@seat.SeatName</text>
+                                            <input onchange="statecheck(this,@seat.SeatId)" type="checkbox" name="Seat" style="height:30px;width:30px;margin:0px 0px 0px 0px " value="@seat.SeatId" @(seat.Status ? "disabled checked" : "")
+                                                   title="@(seat.Status?"Ghế đã bán":"Ghế trống")" />
+                                        </label>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BusType, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10" style="margin-left: 10px;">
+                        <div id="sidebar" class="family"><img src="~/Content/images/choseseat1.jpg"></div>
+                    </div>
+
+                </div>
+                <div class="book-button text-center">
+                    <button class="book-now-btn">Tiếp Tục</button>
+                </div>
+            </div>
+                            }
+        @Html.ActionLink("Quay lại", "Booking")
+        </div>
+            
+      
+<script>
+ function statecheck(chk, layer) {
+var myLayer = document.getElementById(layer);
+
+if(chk.checked === true){
+    myLayer.style.backgroundColor = "#FF8C00";
+    } else {
+    myLayer.style.backgroundColor = "green";
+    }
+}
+</script>
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }

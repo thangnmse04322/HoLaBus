@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - HoLaBus</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="icon" href="~/favicon2.ico" />
+    @RenderSection("Styles", required: false)
+    
+    
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @*@Html.ActionLink("Hola Bus", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Trang Chủ", "Index", "ShowNews")</li>
+                    <li>@Html.ActionLink("Chúng Tôi", "About", "Home")</li>
+                    <li>@Html.ActionLink("Đánh Giá", "IndexGuest", "FeedbackUser")</li>
+                    <li>@Html.ActionLink("Thuê Xe", "CheckRel", "UserRentalBusOrder")</li>
+                    <li>@Html.ActionLink("Đặt Vé", "CheckUpdate", "TicketBooking")</li>
+                    <li>@Html.ActionLink("Trợ Giúp", "Index", "Support")</li>
+                    <li>@Html.ActionLink("Đơn Hàng", "OrderAccountManage", "Support")</li>
+                    @*<li>@Html.ActionLink("Admin", "Admin", "Home")</li>*@
+
+                    
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer style="position: inherit; bottom: 0; height: 20px; background-color: white; width: 100%; margin-bottom:20px">
+            <p>&copy; @DateTime.Now.Year - Website được phát triển bởi nhóm SWP439_4</p>
+        </footer>
+    
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

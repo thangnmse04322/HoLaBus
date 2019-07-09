@@ -1,0 +1,42 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    var username = User.Identity.GetUserName();
+    var findIndex = username.IndexOf("@");
+    var cuttedUsername = User.Identity.GetUserName().Substring(findIndex);
+    var usernameLength = username.Length - cuttedUsername.Length;
+    var usernameFixed = username.Substring(0, usernameLength);
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+     
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="#">@usernameFixed</a>
+                <ul>
+
+                    <li>  @Html.ActionLink("Tài Khoản / Đơn Hàng", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+                    @if (usernameFixed.Equals("holabus"))
+                    {
+                        <li>@Html.ActionLink("Trang Quản Lý Hola Bus", "Admin", "Home", routeValues: null, htmlAttributes: new { })</li>
+                    }
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Đăng Xuất</a></li>
+
+                    @*<li>  @Html.ActionLink("Xin Chào Bạn: " + $"{usernameFixed}", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>*@
+                </ul>
+            </li>
+        </ul>
+
+
+
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+
+        <li>@Html.ActionLink("Đăng Nhập", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

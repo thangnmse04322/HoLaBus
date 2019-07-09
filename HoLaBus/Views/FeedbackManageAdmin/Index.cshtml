@@ -1,0 +1,84 @@
+﻿@model IEnumerable<HoLaBus.Models.Feedback>
+
+@{
+    ViewBag.Title = "Quản Lý Đánh Giá";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+@section Styles {
+    @Styles.Render("~/Content/datatables")
+}
+
+<section id="page-title-area" class="section-padding overlay">
+    <div class="container">
+        <div class="row">
+            <!-- Page Title Start -->
+
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>Quản Lý Đánh Giá</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                </div>
+                <div class="section-title  text-danger">
+                    <p>
+                        @Html.ActionLink("Trang Quản Lý HoLaBus", "Admin", "Home")
+                    </p>
+
+                    <table class="table table-bordered table-striped table-responsive">
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+
+
+                                        @if (item.UserId == null)
+                                        {
+
+                                            <p style="color:white"><b>@Html.DisplayFor(modelItem => item.GuestName)</b>___(<i>@Html.DisplayFor(modelItem => item.DateCreate)</i>)</p>
+                                            <p style="color:tan"><b style="color:white">Đánh Giá: </b>@Html.DisplayFor(modelItem => item.FeedbackUser)</p>
+                                            <p style="color:tan"><b style="color:white">HolaBus: </b>  @Html.DisplayFor(modelItem => item.FeedbackAdmin)</p>
+                                            @Html.ActionLink("Phản Hồi", "Edit", new { id = item.FeedbackId })<b>___</b>
+                                            @Html.ActionLink("Chi Tiết", "Details", new { id = item.FeedbackId })<b>___</b>
+                                            @Html.ActionLink("Xóa", "Delete", new { id = item.FeedbackId })
+                                            <br />
+                                        }
+                                        else
+                                        {
+
+                                            <p style="color:white"><b>@Html.DisplayFor(modelItem => item.ApplicationUser.Email)</b>___(<i>@Html.DisplayFor(modelItem => item.DateCreate)</i>)</p>
+                                            <p style="color:tan"><b style="color:white">Đánh Giá: </b>@Html.DisplayFor(modelItem => item.FeedbackUser)</p>
+                                            <p style="color:tan"><b style="color:white">HolaBus: </b>  @Html.DisplayFor(modelItem => item.FeedbackAdmin)</p>
+                                            @Html.ActionLink("Phản Hồi", "Edit", new { id = item.FeedbackId })<b>___</b>
+                                            @Html.ActionLink("Chi Tiết", "Details", new { id = item.FeedbackId })<b>___</b>
+                                            @Html.ActionLink("Xóa", "Delete", new { id = item.FeedbackId })
+                                            <br />
+                                        }
+
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <p>
+                        @Html.ActionLink("Trang Quản Lý HoLaBus", "Admin", "Home")
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/datatables")
+        <script>
+            $(document).ready(function () {
+                $('#newsDataTable').DataTable({
+                    "language": {
+                        "url": "/Content/Vietnamese.json"
+                    }
+                });
+            });
+        </script>
+    }

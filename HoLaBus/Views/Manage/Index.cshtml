@@ -1,0 +1,175 @@
+﻿@model HoLaBus.Models.IndexViewModel
+@{
+    ViewBag.Title = "Quản Lý Tài Khoản";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<section id="page-title-area" class="section-padding overlay">
+    <div class="container">
+        <div class="row">
+            <!-- Page Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>Trang Quản Lý Người Dùng</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                </div>
+            </div>
+            <!-- Page Title End -->
+        </div>
+    </div>
+</section>
+<br />
+
+
+
+
+<section id="service-area" class="section-padding">
+    <div class="container" >
+        <div class="row">
+            <p class="text-success">@ViewBag.StatusMessage</p>
+            <!-- Section Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>Quản Lý Tài Khoản / Đơn Hàng</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                </div>
+
+            </div>
+            <!-- Section Title End -->
+        </div>
+
+@if (Model.HasPassword && Model.IsAdmin)
+{
+    <div class="row">
+        <div class="col-lg-4 text-center">
+            <div class="service-item" style="height:340px">
+                <i class="fa fa-user-secret"></i>
+                <h3>Thay Đổi Mật Khẩu</h3>
+                <p>Bạn thay đổi mật khẩu đăng nhập tại đây!</p>
+                <br />
+                <div class="about-btn">
+                    <br />
+                    <p><a href="~/Manage/ChangePassword">Thay Đổi</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 text-center">
+            <div class="service-item" style="height:340px">
+                <i class="fa fa-user"></i>
+                <h3>Trang Quản Lý HoLa Bus</h3>
+                <p>Bạn chọn tiếp túc để đi đến trang quản lý của HoLa Bus!</p>
+                <br />
+                <div class="about-btn">
+                    <p><a href="~/Home/Admin">Tiếp Tục</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 text-center">
+            <div class="service-item" style="height:340px">
+                <i class="fa fa-cog"></i>
+                <h3>Cập Nhật TK</h3>
+                <p>Bạn cập nhật thông tin tài khoản tại đây!</p>
+                <br />
+                <div class="about-btn">
+                    <br />
+                    <br />
+                    <p><a href="~/Manage/UpdateUserInfo">Cập Nhật</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 text-center">
+            <div class="service-item" style="height:340px">
+                <i class="fa fa-info"></i>
+                <h3>Tài Khoản</h3>
+                <p>Xem thông tin tài khoản của bạn tại đây!</p>
+                <br />
+                <div class="about-btn">
+                    <p><a href="~/Manage/DisplayInfo">Chi Tiết</a></p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-4 text-center">
+            <div class="service-item" style="height:340px">
+                <i class="fa fa-ticket"></i>
+                <h3>Đơn Vé Xe Bạn Đặt</h3>
+                <p>Xem thông tin đơn đặt vé tại đây!</p>
+                <br />
+                <div class="about-btn">
+                    <p><a href="~/OrderTicketManageUser/Index">Chi Tiết</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 text-center">
+            <div class="service-item" style="height:340px">
+                <i class="fa fa-bus"></i>
+                <h3>Đơn Thuê Xe Bạn Đặt</h3>
+                <p>Xem thông tin đơn thuê xe tại đây!</p>
+                <br />
+                <div class="about-btn">
+                    <p><a href="~/RentalBusManageUser/Index">Chi Tiết</a></p>
+                </div>
+            </div>
+        </div>
+        </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-lg-4 text-center">
+            <div class="service-item" style="height:340px">
+                <i class="fa fa-cog"></i>
+                <h3>Cập Nhật TK</h3>
+                <p>Bạn cập nhật thông tin tài khoản tại đây!</p>
+                <br />
+                <div class="about-btn">
+                    <p><a href="~/Manage/UpdateUserInfo">Cập Nhật</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 text-center">
+            <div class="service-item" style="height:340px">
+                <i class="fa fa-user"></i>
+                <h3>Tài Khoản</h3>
+                <p>Xem thông tin tài khoản của bạn tại đây!</p>
+                <br />
+                <div class="about-btn">
+                    <p><a href="~/Manage/DisplayInfo">Chi Tiết</a></p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-4 text-center">
+            <div class="service-item" style="height:340px">
+                <i class="fa fa-ticket"></i>
+                <h3>Đơn Vé Xe </h3>
+                <p>Xem thông tin đơn đặt vé tại đây!</p>
+                <br />
+                <div class="about-btn">
+                    <p><a href="~/OrderTicketManageUser/Index">Chi Tiết</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 text-center">
+            <div class="service-item" style="height:340px">
+                <i class="fa fa-bus"></i>
+                <h3>Đơn Thuê Xe</h3>
+                <p>Xem thông tin đơn thuê xe tại đây!</p>
+                <br />
+                <div class="about-btn">
+                    <p><a href="~/RentalBusManageUser/Index">Chi Tiết</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+   </div>
+        <!-- Service Content End -->
+  
+</section>

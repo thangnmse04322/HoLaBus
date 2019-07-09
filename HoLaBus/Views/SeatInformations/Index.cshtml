@@ -1,0 +1,128 @@
+﻿@model IEnumerable<HoLaBus.Models.SeatInformation>
+
+@{
+    ViewBag.Title = "Quản Lý Ghế";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+@section Styles {
+    @Styles.Render("~/Content/datatables")
+}
+
+<section id="page-title-area" class="section-padding overlay">
+    <div class="container">
+        <div class="row">
+            <!-- Page Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>Quản Lý Ghế</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                </div>
+            </div>
+            <!-- Page Title End -->
+        </div>
+    </div>
+</section>
+<br />
+<br />
+
+<div class="container">
+    <br />
+    <p>
+        @Html.ActionLink("Trang Quản Lý HoLaBus", "Admin", "Home")
+    </p>
+    <table class="table table-bordered table-striped table-responsive" id="newsDataTable">
+        <thead>
+            <tr style="background-color:cadetblue; color:white">
+                <th>
+                    @Html.DisplayNameFor(model => model.BusId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BusName)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.SeatName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CommentAdmin)
+                </th>
+                <th>
+                    Bán Ghế / Xóa Ghế / Sửa Ghế
+                </th>
+                <th>
+                    Chi Tiết Thông Tin Ghế
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BusId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BusName)
+                    </td>
+
+                    <td style="text-align:center">
+                        @Html.DisplayFor(modelItem => item.SeatName)
+                    </td>
+                    @if (item.Status == true)
+                    {
+                        <td style="text-align:center">
+                            <span style="color:red">Đóng</span>
+                        </td>
+                    }
+                    else
+                    {
+                        <td style="text-align:center">
+                            <span style="color:blue">Mở</span>
+                        </td>
+                    }
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CommentAdmin)
+                    </td>
+                    @if (item.CommentAdmin.Equals("Ghế đã bán"))
+                    {
+                        <td style="text-align:center">
+                            <span style="color:red">Ghế đã bán không được quyền sửa!</span>
+                        </td>
+                    }
+                    else
+                    {
+                        <td style="text-align:center">
+                            <label style="background-color:green;text-align:center;color:green"> _<a style="color:white" @Html.ActionLink("Sửa", "Edit", new { id = item.SeatId })></a> </label>
+                       
+                        </td>
+                    }
+
+                        <td style="text-align:center">
+                          
+                            <label style="background-color:orange;text-align:center;color:orange">_<a style="color:white" @Html.ActionLink("Chi Tiết", "Details", new { id = item.SeatId })></a></label>
+                            
+                        </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p>
+        @Html.ActionLink("Trang Quản Lý HoLaBus", "Admin", "Home")
+    </p>
+</div>
+   
+        @section Scripts {
+            @Scripts.Render("~/bundles/datatables")
+            <script>
+                $(document).ready(function () {
+                    $('#newsDataTable').DataTable({
+                        "language": {
+                            "url": "/Content/Vietnamese.json"
+                        }
+                    });
+                });
+            </script>
+        }

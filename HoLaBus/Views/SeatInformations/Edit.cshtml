@@ -1,0 +1,127 @@
+﻿@model HoLaBus.Models.SeatInformation
+
+@{
+    ViewBag.Title = "Thêm/Xóa Ghế";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<section id="page-title-area" class="section-padding overlay">
+    <div class="container">
+        <div class="row">
+            <!-- Page Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <<h2>Quản Lý Ghế</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                </div>
+            </div>
+            <!-- Page Title End -->
+        </div>
+    </div>
+</section>
+<br />
+<div class="form-horizontal">
+    <div class="container">
+        <br />
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Thêm/Xóa Ghế</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.SeatId)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BusId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.BusId, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.BusId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BusName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.BusName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.BusName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SeatName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.SeatName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.SeatName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+            
+                        @{
+                            List<SelectListItem>
+                                listItems3 = new List<SelectListItem>
+                                    ();
+                            listItems3.Add(new SelectListItem
+                            {
+                                Text = "Đóng",
+                                Value = "true",
+                                Selected = true
+                            });
+                            listItems3.Add(new SelectListItem
+                            {
+                                Text = "Mở",
+                                Value = "false",
+
+                            });
+
+
+                        }
+
+                        @Html.DropDownListFor(model => model.Status, listItems3, "Chọn", htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                    </div>
+                   
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CommentAdmin, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @{
+                            List<SelectListItem> listItems2 = new List<SelectListItem>();
+                            listItems2.Add(new SelectListItem
+                            {
+                                Text = "Bỏ Bán Ghế Này",
+                                Value = "Ghế hỏng"
+                            });
+                            listItems2.Add(new SelectListItem
+                            {
+                                Text = "Bán Ghế Này",
+                                Value = "Ghế đang bán"
+                            });
+
+                        }
+
+                        @Html.DropDownListFor(model => model.CommentAdmin, listItems2, "Chọn", htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CommentAdmin, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="book-button text-center">
+                    <button class="book-now-btn">Sửa</button>
+
+                </div>
+            </div>
+                            }
+        @Html.ActionLink("Quay lại", "Index")
+    </div>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon2.ico" type="image/x-icon" />
+    <title>@ViewBag.Title - HoLaBus</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="icon" href="~/favicon2.ico" />
+    @RenderSection("Styles", required: false)
+    
+    <!--=== Bootstrap CSS ===-->
+    <link href="~/Content/assets/css/bootstrap.min.css" rel="stylesheet">
+    <!--=== Slicknav CSS ===-->
+    <link href="~/Content/assets/css/plugins/slicknav.min.css" rel="stylesheet">
+    <!--=== Magnific Popup CSS ===-->
+    <link href="~/Content/assets/css/plugins/magnific-popup.css" rel="stylesheet">
+    <!--=== Owl Carousel CSS ===-->
+    <link href="~/Content/assets/css/plugins/owl.carousel.min.css" rel="stylesheet">
+    <!--=== Gijgo CSS ===-->
+    <link href="~/Content/assets/css/plugins/gijgo.css" rel="stylesheet">
+    <!--=== FontAwesome CSS ===-->
+    <link href="~/Content/assets/css/font-awesome.css" rel="stylesheet">
+    <!--=== Theme Reset CSS ===-->
+    <link href="~/Content/assets/css/reset.css" rel="stylesheet">
+    <!--=== Main Style CSS ===-->
+    <link href="~/Content/style.css" rel="stylesheet">
+    <!--=== Responsive CSS ===-->
+    <link href="~/Content/assets/css/responsive.css" rel="stylesheet">
+
+
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="loader-active" onload="startTime()">
+
+    <!--== Preloader Area Start ==-->
+    <div class="preloader">
+        <div class="preloader-spinner">
+           
+        </div>
+    </div>
+    <!--== Preloader Area End ==-->
+    <!--== Header Area Start ==-->
+    <header id="header-area" class="fixed-top">
+        <!--== Header Top Start ==-->
+        <div id="header-top" class="d-none d-xl-block">
+            <div class="container">
+                <div class="row">
+                    <!--== Single HeaderTop Start ==-->
+                    <div class="col-lg-3 text-left">
+                        <i class="fa fa-map-marker"></i> <b> HoLa Bus, FPT UniverSity, HN</b>
+                    </div>
+                    <!--== Single HeaderTop End ==-->
+                    <!--== Single HeaderTop Start ==-->
+                    <div class="col-lg-3 text-center">
+                        <i class="fa fa-mobile"></i> <b> 083 809 0004</b>
+                    </div>
+                    <!--== Single HeaderTop End ==-->
+                    <!--== Single HeaderTop Start ==-->
+                    <div class="col-lg-3 text-center">
+                        <i class="fa fa-clock-o"></i><b id="timeout"></b>
+                    </div>
+                    <!--== Single HeaderTop End ==-->
+                </div>
+            </div>
+        </div>
+        <!--== Header Top End ==-->
+        <!--== Header Bottom Start ==-->
+        <div id="header-bottom">
+            <div class="container">
+                <div class="row">
+                    <!--== Logo Start ==-->
+                    <div class="col-lg-4">
+
+                    </div>
+                    <!--== Logo End ==-->
+                    <!--== Main Menu Start ==-->
+                    <div class="col-lg-8 d-none d-xl-block">
+                        <nav class="mainmenu alignright">
+                            <ul>
+
+                                <li>
+                                    @Html.ActionLink("Trang Chủ", "Index", "ShowNews")
+
+                                </li>
+                                <li>
+                                    <a href="#">Dịch Vụ</a>
+                                    <ul>
+                                        <li>@Html.ActionLink("Đặt Vé Xe", "CheckUpdate", "TicketBooking")</li>
+                                        <li>@Html.ActionLink("Thuê Xe", "CheckRel", "UserRentalBusOrder")</li>
+                                        <li>@Html.ActionLink("Gửi Tin Nhắn Cho HoLa Bus", "SendRequest", "Support")</li>
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Quản Lý</a>
+                                    <ul>
+                                        <li>@Html.ActionLink("Đơn Vé Xe Đã Đặt", "Index", "OrderTicketManageUser")</li>
+                                        <li>@Html.ActionLink("Đơn Thuê Xe Đã Đặt", "Index", "RentalBusManageUser")</li>
+                                        <li>@Html.ActionLink("Tài Khoản", "OrderAccountManage", "Support")</li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a href="#">Hỗ Trợ</a>
+                                    <ul>
+                                        <li>@Html.ActionLink("Hướng Dẫn/Hỏi Đáp", "QAndA", "Support")</li>
+                                        @*<li>@Html.ActionLink("Hướng Dẫn Sử Dụng", "QAndA", "Support")</li>*@
+                                        <li>@Html.ActionLink("Gửi Tin Nhắn Cho HoLa Bus", "SendRequest", "Support")</li>
+                                    </ul>
+                                </li>
+                                <li>@Html.ActionLink("Đánh Giá", "IndexGuest", "FeedbackUser")</li>
+                                <li>@Html.ActionLink("Chúng Tôi", "About", "Home")</li>
+
+
+                                @Html.Partial("_LoginPartial")
+
+                            </ul>
+
+                        </nav>
+
+                    </div>
+
+                            <!--== Main Menu End ==-->
+                    </div>
+                </div>
+        </div>
+        <!--== Header Bottom End ==-->
+    </header>
+ 
+    <!--== Header Area End ==-->
+    <!--== Page Title Area Start ==-->
+
+    <!--== Page Title Area End ==-->
+    @RenderBody()
+    <!--== Footer Area Start ==-->
+    <br />
+    <br />
+    <section id="footer-area">
+        <!-- Footer Widget Start -->
+        <div class="footer-widget-area">
+            <div class="container">
+                <div class="row">
+                    <!-- Single Footer Widget Start -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-footer-widget">
+                            <h2>Chúng Tôi</h2>
+                            <div class="widget-body">
+                              
+                                <p>HoLa Bus là dịch vụ được phát triển dành riêng cho các bạn sinh viên FPT.</p>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Footer Widget End -->
+                    <!-- Single Footer Widget Start -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-footer-widget">
+                            <h2>Dịch Vụ</h2>
+                            <div class="widget-body">
+                                <ul class="recent-post">
+                                    <li>
+                                       
+                                        <a href="~/UserRentalBusOrder/CheckRel">
+                                   
+                                    Thuê Xe!
+                                    <i class="fa fa-long-arrow-right"></i>
+                                    </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/TicketBooking/CheckUpdate">
+                                            Đặt Vé!
+                                            <i class="fa fa-long-arrow-right"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Support/SendRequest">
+                                            Gửi Tin Nhắn Cho HoLa Bus!
+                                            <i class="fa fa-long-arrow-right"></i>
+                                        </a>
+                                    </li>
+                               
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Footer Widget End -->
+                    <!-- Single Footer Widget Start -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-footer-widget">
+                            <h2>Liên Hệ</h2>
+                            <div class="widget-body">
+                                <p>Hãy liên hệ với bọn mình để biết thêm về dịch vụ nhé! </p>
+
+                                <ul class="get-touch">
+                                    <li><i class="fa fa-map-marker"></i> FPT University - Hoa Lac CamPus</li>
+                                    <li><i class="fa fa-mobile"></i> 083 809 0004</li>
+                                    <li><i class="fa fa-envelope"></i> holabusfptu@gmail.com</li>
+                                </ul>
+                                <a  href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1686.6074922540965!2d105.52657433760773!3d21.013368698486232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b32ca5086d%3A0xa3c62e29d8ab37e4!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBGUFQ!5e1!3m2!1svi!2s!4v1542802662468"  class="map-show" target="_blank">Vị Trí</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Footer Widget End -->
+                </div>
+            </div>
+        </div>
+        <!-- Footer Widget End -->
+        <!-- Footer Bottom Start -->
+        <div class="footer-bottom-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        @*<p>
+
+
+            <script>document.write(new Date().getFullYear());</script> Website Developer :  <i aria-hidden="true"></i><a href="https://www.facebook.com/nNguyen.MinhThang" target="_blank">Nguyễn Minh Thắng</a> - Tester / Documentation :
+            <a href="https://www.facebook.com/xuankhanh.nguyen.3158" target="_blank">Nguyễn Xuân Khánh</a> - <a href="https://www.facebook.com/ThangLkd" target="_blank">Lê Khắc Đức Thắng</a> - <a href="https://www.facebook.com/huy.nguyenlequang.7" target="_blank">Nguyễn Lê Quang Huy</a>
+
+        </p>*@
+                        <p>
+
+
+                            <script>document.write(new Date().getFullYear());</script> Website Developer :  <i aria-hidden="true"></i><a href="https://www.facebook.com/nNguyen.MinhThang" target="_blank">Nguyễn Minh Thắng</a> - <a href="https://www.facebook.com/huy.nguyenlequang.7" target="_blank">Nguyễn Lê Quang Huy</a> - Tester / Documentation :
+                            <a href="https://www.facebook.com/xuankhanh.nguyen.3158" target="_blank">Nguyễn Xuân Khánh</a> - <a href="https://www.facebook.com/ThangLkd" target="_blank">Lê Khắc Đức Thắng</a>
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Bottom End -->
+    </section>
+    <!--== Footer Area End ==-->
+    <!--== Scroll Top Area Start ==-->
+
+    <!--== Scroll Top Area End ==-->
+    <!--=======================Javascript============================-->
+    <!--=== Jquery Min Js ===-->
+    <script src="~/Content/assets/js/jquery-3.2.1.min.js"></script>
+    <!--=== Jquery Migrate Min Js ===-->
+    <script src="~/Content/assets/js/jquery-migrate.min.js"></script>
+    <!--=== Popper Min Js ===-->
+    <script src="~/Content/assets/js/popper.min.js"></script>
+    <!--=== Bootstrap Min Js ===-->
+    <script src="~/Content/assets/js/bootstrap.min.js"></script>
+    <!--=== Gijgo Min Js ===-->
+    <script src="~/Content/assets/js/plugins/gijgo.js"></script>
+    <!--=== Vegas Min Js ===-->
+    <script src="~/Content/assets/js/plugins/vegas.min.js"></script>
+    <!--=== Isotope Min Js ===-->
+    <script src="~/Content/assets/js/plugins/isotope.min.js"></script>
+    <!--=== Owl Caousel Min Js ===-->
+    <script src="~/Content/assets/js/plugins/owl.carousel.min.js"></script>
+    <!--=== Waypoint Min Js ===-->
+    <script src="~/Content/assets/js/plugins/waypoints.min.js"></script>
+    <!--=== CounTotop Min Js ===-->
+    <script src="~/Content/assets/js/plugins/counterup.min.js"></script>
+    <!--=== YtPlayer Min Js ===-->
+    <script src="~/Content/assets/js/plugins/mb.YTPlayer.js"></script>
+    <!--=== Magnific Popup Min Js ===-->
+    <script src="~/Content/assets/js/plugins/magnific-popup.min.js"></script>
+    <!--=== Slicknav Min Js ===-->
+    <script src="~/Content/assets/js/plugins/slicknav.min.js"></script>
+
+    <!--=== Mian Js ===-->
+    <script src="~/Content/assets/js/main.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script>
+function startTime() {
+months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
+ days = ['CN', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'];
+    var today = new Date();
+    var d = days[today.getDay()];
+    var dd=today.getDate();
+    var yy = today.getFullYear();
+    var mm = months[today.getMonth()]
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    //ampm = today.getHours() >= 12 ? 'PM' : 'AM';
+    // add a zero in front of numbers<10
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById("timeout").innerHTML =" "+ d + " - " +dd+"/"+mm+"/"+yy+" - "+ h + ":" + m + ":" + s;
+    var t = setTimeout(function(){ startTime() }, 500);
+}
+
+function checkTime(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+}
+    </script>
+</body>
+
+</html>

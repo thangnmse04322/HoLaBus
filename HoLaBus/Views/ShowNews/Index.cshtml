@@ -1,0 +1,664 @@
+﻿@model IEnumerable<HoLaBus.Models.News>
+
+@{
+    ViewBag.Title = "Trang Chủ";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<script>
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+        showDivs(slideIndex += n);
+    }
+
+    function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        if (n > x.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = x.length }
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        x[slideIndex - 1].style.display = "block";
+    }
+</script>
+
+
+
+<section id="home-slider-area">
+  
+    <div class="home-slider-item" style="background: url(/Content/images/sd4.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="slideshowcontent">
+                        <h1>DỊCH VỤ ĐẶT VÉ</h1>
+                        <p>Được phát triển dành riêng cho sinh viên FPT.</p>
+                        <br />
+                        <div class="about-btn">
+                            <p><a href="~/TicketBooking/CheckUpdate">Đặt Vé</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="home-slider-item " style="background: url(/Content/images/sd6.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="slideshowcontent">
+                        <h1>DỊCH VỤ THUÊ XE</h1>
+                        <br />
+                        <p>Dành cho tất cả mọi người và các câu lạc bộ.</p>
+                        <br />
+                        <div class="about-btn">
+                            <p><a href="~/UserRentalBusOrder/CheckRel">Thuê Xe</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="home-slider-item " style="background: url(/Content/images/sd5.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="slideshowcontent">
+                        <h1>Hỗ Trợ</h1>
+                        <p>Nếu cần hỗ trợ hãy để lại tin nhắn cho HoLa Bus Nhé!.</p>
+                        <br />
+                        <div class="about-btn">
+                            <p><a href="~/Support/SendRequest">Gửi</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="home-slider-item " style="background: url(/Content/images/sd1.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="slideshowcontent">
+                        <h1>DỊCH VỤ ĐẶT VÉ</h1>
+                        <p>Được phát triển dành riêng cho sinh viên FPT.</p>
+                        <br />
+                        <div class="about-btn">
+                            <p><a href="~/TicketBooking/CheckUpdate">Đặt Vé</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="home-slider-item " style="background: url(/Content/images/sd2.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="slideshowcontent">
+                        <h1>DỊCH VỤ THUÊ XE</h1>
+                        <br />
+                        <p>Dành cho tất cả mọi người và các câu lạc bộ.</p>
+                        <br />
+                        <div class="about-btn">
+                            <p><a href="~/UserRentalBusOrder/CheckRel">Thuê Xe</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="home-slider-item " style="background: url(/Content/images/ss1.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="slideshowcontent">
+                        <h1>Hỗ Trợ</h1>
+                        <p>Nếu cần hỗ trợ hãy gửi yêu cầu cho HoLa Bus Nhé!.</p>
+                        <br />
+                        <div class="about-btn">
+                            <p><a href="~/Support/SendRequest">Gửi</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="home-slider-item " style="background: url(/Content/images/sd7.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="slideshowcontent">
+                        <h1>DỊCH VỤ ĐẶT VÉ</h1>
+                        <p>Được phát triển dành riêng cho sinh viên FPT.</p>
+                        <br />
+                        <div class="about-btn">
+                            <p><a href="~/TicketBooking/CheckUpdate">Đặt Vé</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--== Slider Area End ==-->
+<!--== About Us Area Start ==-->
+<section id="about-area" class="section-padding">
+    <div class="container">
+        <div class="row">
+         
+            <!-- Section Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    @*<h2>HoLa Bus</h2>*@
+                    <h4>HoLa Bus - Dự Án Khởi Nghiệp Sinh Viên.</h4>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+
+                </div>
+            </div>
+            <!-- Section Title End -->
+        </div>
+
+        <div class="row">
+            <!-- About Content Start -->
+            <div class="col-lg-6">
+                <div class="display-table">
+                    <div class="display-table-cell">
+                        <div class="about-content">
+                            <p>HoLa Bus là một dự án khởi nghiệp đã được ấp ủ từ lâu, được thực hiện bởi các thành viên trong câu lạc bộ Kinh Doanh, nay đã được chính thức ra mắt với toàn thể các bạn sinh viên ĐH FPT hiện đang sinh sống và học tập tại Hòa Lạc Campus. </p>
+
+                            <div class="about-btn">
+                                <p><a href="https://holabus.azurewebsites.net/Home/About">HoLa Bus</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- About Content End -->
+            <!-- About Video Start -->
+            <div class="col-lg-6">
+                <img class="mySlides" src="~/Content/images/hlb9.jpg" height="300" width="980">
+            </div>
+            <!-- About Video End -->
+        </div>
+    </div>
+</section>
+
+
+
+<!--== About Us Area End ==-->
+<!--== Services Area Start ==-->
+<section id="service-area" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <!-- Section Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>Dịch Vụ Của Chúng Tôi</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                </div>
+
+            </div>
+            <!-- Section Title End -->
+        </div>
+
+
+        <!-- Service Content Start -->
+        <div class="row">
+            <!-- Single Service Start -->
+            <div class="col-lg-4 text-center">
+                <div class="service-item">
+                    <i class="fa fa-send"></i>
+                    <h3>Hỗ Trợ</h3>
+                    <p>Nếu cần hỗ trợ hãy gửi yêu cầu cho HoLa Bus Nhé!.</p>
+                    <br />
+                    <div class="about-btn">
+                        <p><a href="~/Support/SendRequest">Gửi</a></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Service End -->
+            <!-- Single Service Start -->
+            <div class="col-lg-4 text-center">
+                <div class="service-item">
+                    <i class="fa fa-bus"></i>
+                    <h3>Dịch Vụ Thuê Xe</h3>
+                    <p>HoLa Bus cung cấp dịch vụ thê xe nhằm phục vụ thuê xe đi chơi của tất cả mọi người ngoài trường cũng như trong trường và các câu lạc bộ khi có như cầu thuê cả xe.</p>
+                    <br />
+                    <div class="about-btn">
+                        <p><a href="~/UserRentalBusOrder/CheckRel">Thuê Xe</a></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Service End -->
+            <!-- Single Service Start -->
+            <div class="col-lg-4 text-center">
+                <div class="service-item">
+                    <i class="fa fa-ticket"></i>
+                    <h3>Dịch Vụ Đặt Vé</h3>
+                    <p>Đây là dịch vụ được phát triển dành cho sinh viên FPT. Dịch vụ được tạo ra với mục đích giúp các bạn sinh viên tránh khỏi tình trạng chen lấn trên tuyến xe bus 74 và có một chuyến đi thoải mái nhất vào cuối tuần và các ngày lễ.</p>
+                    <br />
+                    <div class="about-btn">
+                        <p><a href="~/TicketBooking/CheckUpdate">Đặt Vé</a></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Single Service End -->
+        </div>
+        <!-- Service Content End -->
+    </div>
+</section>
+<!--== Services Area End ==-->
+<!--== Partner Area Start ==-->
+<div class="col-lg-12">
+    <div class="section-title  text-center">
+        <h2>Tin Tức</h2>
+        <span class="title-line"><i class="fa fa-car"></i></span>
+    </div>
+
+</div>
+<div id="partner-area">
+    <div class="container-fluid">
+        <div class="row">
+
+
+
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="partner-content-wrap">
+                    <!-- Single Partner Start -->
+                    <div class="single-partner">
+                        <div class="display-table">
+                            <div class="display-table-cell">
+                                @foreach (var item in Model)
+            {
+
+                                    <h6>
+                                        <b>
+                                            <a href="~/ShowNews/views?id=@item.Id&title=@item.Name">
+                                                @item.Name
+                                            </a>
+                                        </b><i  style=" font-size: smaller">@item.CreatedAt</i>
+
+                                    </h6>
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-partner">
+                        <div class="display-table">
+                            <div class="display-table-cell">
+                                @foreach (var item in Model)
+            {
+
+                                    <h6>
+                                        <b>
+                                            <a href="~/ShowNews/views?id=@item.Id&title=@item.Name">
+                                                @item.Name
+                                            </a>
+                                        </b><i  style=" font-size: smaller">@item.CreatedAt</i>
+
+                                    </h6>
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Partner End -->
+                    <!-- Single Partner Start -->
+                    <div class="single-partner">
+                        <div class="display-table">
+                            <div class="display-table-cell">
+                                @foreach (var item in Model)
+            {
+
+                                    <h6>
+                                        <b>
+                                            <a href="~/ShowNews/views?id=@item.Id&title=@item.Name">
+                                                @item.Name
+                                            </a>
+                                        </b><i  style=" font-size: smaller">@item.CreatedAt</i>
+
+                                    </h6>
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Partner End -->
+                    <!-- Single Partner Start -->
+                    <div class="single-partner">
+                        <div class="display-table">
+                            <div class="display-table-cell">
+                                @foreach (var item in Model)
+            {
+
+                                    <h6>
+                                        <b>
+                                            <a href="~/ShowNews/views?id=@item.Id&title=@item.Name">
+                                                @item.Name
+                                            </a>
+                                        </b><i style=" font-size: smaller">@item.CreatedAt</i>
+
+                                    </h6>
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Partner End -->
+                    <div class="single-partner">
+                        <div class="display-table">
+                            <div class="display-table-cell">
+                                @foreach (var item in Model)
+                                {
+
+                                    <h6>
+                                        <b>
+                                            <a href="~/ShowNews/views?id=@item.Id&title=@item.Name">
+                                                @item.Name
+                                            </a>
+                                        </b><i  style=" font-size: smaller">@item.CreatedAt</i>
+
+                                    </h6>
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--== Partner Area End ==-->
+<!--== Fun Fact Area Start ==-->
+<section id="funfact-area" class="overlay section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-11 col-md-12 m-auto">
+                <div class="funfact-content-wrap">
+                    <div class="row">
+                        <!-- Single FunFact Start -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-funfact">
+                                <div class="funfact-icon">
+                                    <i class="fa fa-smile-o"></i>
+                                </div>
+                                <div class="funfact-content">
+                                    <p><span class="counter">1000</span>+</p>
+                                    <h4>Thành Viên</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single FunFact End -->
+                        <!-- Single FunFact Start -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-funfact">
+                                <div class="funfact-icon">
+                                    <i class="fa fa-car"></i>
+                                </div>
+                                <div class="funfact-content">
+                                    <p><span class="counter">25</span>+</p>
+                                    <h4>Số Lượng Xe</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single FunFact End -->
+                        <!-- Single FunFact Start -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="single-funfact">
+                                <div class="funfact-icon">
+                                    <i class="fa fa-bank"></i>
+                                </div>
+                                <div class="funfact-content">
+                                    <p><span class="counter">1</span>+</p>
+                                    <h4>Cơ Sở</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single FunFact End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--== Fun Fact Area End ==-->
+<!--== Choose Car Area Start ==-->
+<section id="choose-car" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <!-- Section Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>Các Loại Xe</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                    <p>Những loại xe hiện đang kinh doanh của HoLa Bus.</p>
+                </div>
+            </div>
+            <!-- Section Title End -->
+        </div>
+
+        <div class="row">
+            <!-- Choose Area Content Start -->
+            <div class="col-lg-12">
+                <div class="choose-content-wrap">
+                    <!-- Choose Area Tab Menu -->
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#popular_cars" role="tab" aria-selected="true">Loại Xe</a>
+                        </li>
+                    </ul>
+                    <!-- Choose Area Tab Menu -->
+                    <!-- Choose Area Tab content -->
+                    <div class="tab-content" id="myTabContent">
+                        <!-- Popular Cars Tab Start -->
+                        <div class="tab-pane fade show active" id="popular_cars" role="tabpanel" aria-labelledby="home-tab">
+                            <!-- Popular Cars Content Wrapper Start -->
+                            <div class="popular-cars-wrap">
+                                <!-- Filtering Menu -->
+                                <!-- Filtering Menu -->
+                                <!-- PopularCars Tab Content Start -->
+                                <div class="row popular-car-gird">
+                                    <!-- Single Popular Car Start -->
+                                    <div class="col-lg-4 col-md-6 suv con mpv">
+                                        <div class="single-popular-car">
+                                            <div class="p-car-thumbnails">
+                                                <a class="car-hover" href="~/Content/images/xe0.jpg">
+                                                    <img src="~/Content/images/xe0.jpg" alt="JSOFT">
+                                                </a>
+                                            </div>
+
+                                            <div class="p-car-content">
+                                                <h3>
+                                                    <a href="#">Xe 4 Chỗ</a>
+                                                    <span class="price"><i class="fa fa-tag"></i> </span>
+                                                </h3>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Single Popular Car End -->
+                                    <!-- Single Popular Car Start -->
+                                    <div class="col-lg-4 col-md-6 con suv mpv">
+                                        <div class="single-popular-car">
+                                            <div class="p-car-thumbnails">
+                                                <a class="car-hover" href="~/Content/images/xe1.jpg">
+                                                    <img src="~/Content/images/xe1.jpg" alt="JSOFT">
+                                                </a>
+                                            </div>
+
+                                            <div class="p-car-content">
+                                                <h3>
+                                                    <a href="#">Xe 7 Chỗ</a>
+                                                    <span class="price"><i class="fa fa-tag"></i> </span>
+                                                </h3>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Single Popular Car End -->
+                                    <!-- Single Popular Car Start -->
+                                    <div class="col-lg-4 col-md-6 hat sedan">
+                                        <div class="single-popular-car">
+                                            <div class="p-car-thumbnails">
+                                                <a class="car-hover" href="~/Content/images/xe2.jpg">
+                                                    <img src="~/Content/images/xe2.jpg" alt="JSOFT">
+                                                </a>
+                                            </div>
+
+                                            <div class="p-car-content">
+                                                <h3>
+                                                    <a href="#">Xe 16 Chỗ</a>
+                                                    <span class="price"><i class="fa fa-tag"></i> </span>
+                                                </h3>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Single Popular Car End -->
+                                    <!-- Single Popular Car Start -->
+                                    <div class="col-lg-4 col-md-6 suv con mpv">
+                                        <div class="single-popular-car">
+                                            <div class="p-car-thumbnails">
+                                                <a class="car-hover" href="~/Content/images/xe3.jpg">
+                                                    <img src="~/Content/images/xe3.jpg" alt="JSOFT">
+                                                </a>
+                                            </div>
+
+                                            <div class="p-car-content">
+                                                <h3>
+                                                    <a href="#">Xe 28 Chỗ</a>
+                                                    <span class="price"><i class="fa fa-tag"></i> </span>
+                                                </h3>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Single Popular Car End -->
+                                    <!-- Single Popular Car Start -->
+                                    <div class="col-lg-4 col-md-6 con hat">
+                                        <div class="single-popular-car">
+                                            <div class="p-car-thumbnails">
+                                                <a class="car-hover" href="~/Content/images/xe4.jpg">
+                                                    <img src="~/Content/images/xe4.jpg" alt="JSOFT">
+                                                </a>
+                                            </div>
+
+                                            <div class="p-car-content">
+                                                <h3>
+                                                    <a href="#">Xe 35 Chỗ</a>
+                                                    <span class="price"><i class="fa fa-tag"></i></span>
+                                                </h3>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Single Popular Car End -->
+                                    <!-- Single Popular Car Start -->
+                                    <div class="col-lg-4 col-md-6 con sedan mpv">
+                                        <div class="single-popular-car">
+                                            <div class="p-car-thumbnails">
+                                                <a class="car-hover" href="~/Content/images/xe5.jpg">
+                                                    <img src="~/Content/images/xe5.jpg" alt="JSOFT">
+                                                </a>
+                                            </div>
+
+                                            <div class="p-car-content">
+                                                <h3>
+                                                    <a href="#">Xe 46 Chỗ</a>
+                                                    <span class="price"><i class="fa fa-tag"></i> </span>
+                                                </h3>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--== Choose Car Area End ==-->
+<!--== Testimonials Area Start ==-->
+<section id="testimonial-area" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <!-- Section Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>Đánh Giá</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                    <p>Cảm nhận của khách hàng về dịch vụ.</p>
+                </div>
+            </div>
+            <!-- Section Title End -->
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 col-md-12 m-auto">
+                <div class="testimonial-content">
+                    <!--== Single Testimoial Start ==-->
+                    <div class="single-testimonial">
+                        <p>Dịch vụ thật tuyệt vời, đội ngũ nhân viên nhiệt tình.</p>
+                        <h3>Nguyen AP</h3>
+                        <div class="client-logo">
+                            <img src="~/Content/images/client-pic-4.jpg" alt="JSOFT">
+                        </div>
+                    </div>
+                    <!--== Single Testimoial End ==-->
+                    <!--== Single Testimoial Start ==-->
+                    <div class="single-testimonial">
+                        <p>Giá vé phù hợp với sinh viên, chất lượng dịch vụ tốt.</p>
+                        <h3>Phuong NA</h3>
+                        <div class="client-logo">
+                            <img src="~/Content/images/client-pic-6.jpg" alt="JSOFT">
+                        </div>
+                    </div>
+                    <!--== Single Testimoial End ==-->
+                    <!--== Single Testimoial Start ==-->
+                    <div class="single-testimonial">
+                        <p>Thời gian giao vé nhanh, thanh toán dễ dàng tiện lợi cho người dùng.</p>
+                        <h3>Anh NP</h3>
+                        <div class="client-logo">
+                            <img src="~/Content/images/client-pic-7.jpg" alt="JSOFT">
+                        </div>
+                    </div>
+                    <!--== Single Testimoial End ==-->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--== Testimonials Area End ==-->
+
+
+<!--== Map Area Start ==-->
+<div class="maparea">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1686.6074922540965!2d105.52657433760773!3d21.013368698486232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x313454b32ca5086d%3A0xa3c62e29d8ab37e4!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBGUFQ!5e1!3m2!1svi!2s!4v1542802662468"></iframe>
+    </div>
+<!--== Map Area End ==-->
